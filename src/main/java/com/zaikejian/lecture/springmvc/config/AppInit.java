@@ -7,6 +7,14 @@ import javax.servlet.ServletRegistration;
 
 /**
  * Created by xiaoz on 2017/2/15.
+ *
+ * 在Servlet3.0中,容器会在类路径中查找实现了javax.servlet.ServletContainerInitializer接口的类
+ * 如果能发现,就会用它来配置Servlet容器。
+ * Spring已经帮我们实现了该接口,名为SpringServletContainerInitializer
+ * 而这个类反过来会查找实现了WebApplicationInitializer接口的类,并将配置的任务交给它们来配置
+ * 在Spring3.2中,引入了一个便利的WebApplicationInitializer实现,也就是
+ * AbstractAnnotationConfigDispatcherServletInitializer
+ *
  */
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
 	protected Class<?>[] getRootConfigClasses() {
